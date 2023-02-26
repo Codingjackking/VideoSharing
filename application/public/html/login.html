@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <link rel="stylesheet" href="login-style.css">
   </head>
@@ -11,38 +14,41 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-		<li><a href="login.html">Login</a></li>
-		<li><a href="registration.html">Register</a></li>
-		<li><a href="postvideo.html">MeTube Studio</a></li>
-		<li><a href="postview.html">View</a></li>
-		<li><a href="profile.html">Profile</a></li>
+		    <li><a href="login.html">Login</a></li>
+		    <li><a href="registration.html">Register</a></li>
+		    <li><a href="postview.html">Browse</a></li>
+		    <li><a href="postvideo.html">MeTube Studio</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="logout.html">Logout</a></li>
       </ul>
     </nav>
     <section>
       <h2>Login</h2>
       <form>
-		<label for="email">Email or mobile phone number:</label>
-        <input type="text" id="email" name="email" required>
+		    <label for="credential">Username or Email:</label>
+        <input type="text" id="credential" name="credential" required
+        placeholder="Username or Email">
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" name="password" id="password" required
+        placeholder="Password">
         <a href="#">Forgot your password?</a>
-        <input type="submit" value="Sign In">
+        <input type="submit" value="Login">
       </form>
 	  <div class="divider">
-        <hr>
-        <span>New to MeTube?</span>
-        <hr>
-      </div>
-      <a href="Registration.html">Create your account</a>
+      <hr>
+      <span>New to MeTube?</span>
+      <hr>
+    </div>
+    <a href="Registration.html">Create your account</a>
     </section>
 	<footer>
 	  <ul>
-	  <li><a href="terms.html">Terms of Service</a></li>
-	  <li><a href="about.html">About US</a></li>
-	  <li><a href="privacy.html">Privacy Notice</a></li>
+	    <li><a href="terms.html">Terms of Service</a></li>
+	    <li><a href="about.html">About US</a></li>
+	    <li><a href="privacy.html">Privacy Notice</a></li>
       <li><a href="contact.html">Help</a></li>
-      </ul>
-	  <p>&copy; 2023 MeTube. All rights reserved.</p>
-	</footer>
+    </ul>
+	  <p>Copyright &copy; Naing Htet 2023. All rights reserved.</p>
+  </footer>
   </body>
 </html>
