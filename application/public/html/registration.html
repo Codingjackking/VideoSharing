@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0" />
     <title>Registration</title>
-	<link rel="stylesheet" type="text/css" href="register-style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
   </head>
   <body>
     <header>
-      <h1>𝕄𝕖𝕋𝕦𝕓𝕖</h1>
+      <h1>MeTube</h1>
     </header>
-    <nav>
+    <nav class="menu">
       <ul>
         <li><a href="index.html">Home</a></li>
 		    <li><a href="login.html">Login</a></li>
@@ -19,43 +19,52 @@
 		    <li><a href="postview.html">Browse</a></li>
         <li><a href="postvideo.html">MeTube Studio</a></li>
 		    <li><a href="profile.html">Profile</a></li>
-        <li><a href="logout.html">Logout</a></li>
+        <li><a href="#">Logout</a></li>
       </ul>
     </nav>
     <main>
       <h2>Registration Form</h2>
       <form>
+        <div class="credential">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required
+        <input type="username" class="username" name="username" required
         placeholder="Username">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required
+        <input type="email" class="email" name="email" required
         placeholder="Email">
+        </div>
+        <div>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required
+        <input type="password" class="password" name="password" required
         placeholder="Password">
+        </div>
+        <div>
         <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password" required
+        <input type="password" class="confirm_password" name="confirm_password" required
         placeholder="Password">
+        </div>
+        <div>
         <label for="age">I am 13+ years of age:</label>
-        <input type="checkbox" id="age" name="age" required>
-        <label for="tos">I accept the <a href="tos.html">TOS and Privacy Rules</a>:</label>
-        <input type="checkbox" id="tos" name="tos" required>
+        <input type="checkbox" class="age" name="age" required>
+        </div>
+        <div>
+        <label for="tos">I accept the <a href="tos.html">TOS</a> and <a href="privacy.html">Privacy Rules</a>:</label>
+        <input type="checkbox" class="tos" name="tos" required>
+        </div>
         <input type="submit" value="Register">
       </form>
 	  <div class="divider">
-        <hr>
-        <span>Already have an account? </span> 
-		<a href="login.html">Sign In</a>
-        <hr>
-      </div>
-      
+      <hr>
+      <span>Already have an account? </span> 
+      <a href="login.html">Sign In</a>
+      </hr>
+    </div>
     </main>
-	<footer>
-	  <ul>
-	  <li><a href="terms.html">Terms of Service</a></li>
-	  <li><a href="about.html">About US</a></li>
-	  <li><a href="privacy.html">Privacy Notice</a></li>
+    <footer class="footnote">
+      <ul>
+      <li><a href="terms.html">Terms of Service</a></li>
+      <li><a href="about.html">About US</a></li>
+      <li><a href="privacy.html">Privacy Notice</a></li>
       <li><a href="contact.html">Help</a></li>
       </ul>
       <p>Copyright &copy; Naing Htet 2023. All rights reserved.</p>
