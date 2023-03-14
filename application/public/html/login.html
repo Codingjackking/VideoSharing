@@ -25,14 +25,18 @@
     <main>
       <h2>Login</h2>
       <form>
-        <div>
+        <div class="input-group">
 		    <label for="credential">Username or Email:</label>
-        <input type="credential" class="credential" name="credential" required
+        <input 
+        class="input-text" 
+        type="credential" 
+        class="credential" 
+        name="credential" required
         placeholder="Username or Email">
         </div>
-        <div>
+        <div class="input-group">
         <label for="password">Password:</label>
-        <input type="password" name="password" class="password" required
+        <input class="input-text" type="password" name="password" class="password" required
         placeholder="Password">
         </div>
         <input type="submit" value="Login">
@@ -43,13 +47,12 @@
         <a href="#">Forgot your password?</a>
       </details>
         </form>
-      <div class="divider">
-      <hr>
-      <span>New to MeTube?</span>
-      <a href="registration.html">Create your account</a>
-      <hr>
-    </div>
   </main>    
+  <div class="login-register">
+    <h3>New to MeTube?</h3>
+    <form action="registration.html">
+    <input type="submit" value="Create your MeTube Account" class="register">
+    </form>
 	<footer class="footnote">
 	  <ul>
 	  <li><a href="terms.html">Terms of Service</a></li>

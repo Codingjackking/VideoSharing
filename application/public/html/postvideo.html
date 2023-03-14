@@ -9,6 +9,7 @@
 <body>
 	<header>
       <h1>MeTube</h1>
+	</header>
 		<nav class="menu">
 			<ul>
 				<li><a href="index.html">Home</a></li>
@@ -20,20 +21,23 @@
 				<li><a href="#">Logout</a></li>
 			</ul>
 		</nav>
-	</header>
-
 	<main>
 		<h2>Post a Video</h2>
 		<form action="#" method="POST">
-			<label for="title">Title:</label>
-			<input type="text" id="title" name="title" required
+			<div class="input-group">
+				<label for="title">Title:</label>
+				<input class="input-text" type="text" id="title" name="title" required
 			placeholder="Title">
-
-			<label for="description">Description:</label>
-			<textarea id="description" name="description" required
+			</div>
+			<div class="input-group">
+				<label for="description">Description:</label>
+				<textarea class="input-textarea" name="description" required
 			placeholder="Description of Video"></textarea>
-			<label for="video">Video:</label>
-			<input type="file" id="video" name="video" accept="video/*" required>
+			</div>
+			<div class="video-group">
+				<label for="video">Video:</label>
+				<input type="file" id="video" name="video" accept="video/*" required>
+			</div>
 			<div class="policy">
 				<label>
 					<input type="checkbox" name="policy" required>
