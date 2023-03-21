@@ -130,7 +130,6 @@
     font-weight: bold;
   }
 
-  
   nav {
     background-color: #ccc;
     margin-top: 60px;
@@ -190,13 +189,6 @@
     margin-top: 20px;
   }
   
-  .valid-text {
-    color: green;
-  }
-
-  .invalid-text {
-    color: red;
-  }
   @media only screen and (max-width: 768px) {
     /* Adjust styling for screens smaller than 768px */
     main {
@@ -243,6 +235,5 @@
       margin: 10px 0;
     }
   }
-  
   
   
