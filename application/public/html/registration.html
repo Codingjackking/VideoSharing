@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0" />
     <title>Registration</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	  <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script defer src="../js/reg-valid.js"></script>
   </head>
   <body>
     <header>
@@ -24,25 +25,25 @@
     </nav>
     <main>
       <h2>Registration Form</h2>
-      <form>
-        <div class="input-group">
+      <form id="reg-form">
+        <div class="input-group" class="form-container">
         <label for="username">Username:</label>
-        <input class="input-text" type="username" class="username" name="username" required
+        <input class="input-text" id="username" type="username" class="username" name="username" required
         placeholder="Username">
         <label for="email">Email:</label>
         <input class="input-text" type="email" class="email" name="email" required
         placeholder="Email">
-        </div>
-        <div class="input-group">
+      </div>
+      <div class="input-group">
         <label for="password">Password:</label>
         <input class="input-text" type="password" class="password" name="password" required
-        placeholder="Password">
-        </div>
-        <div class="input-group">
-        <label for="confirm_password">Confirm Password:</label>
-        <input class="input-text" type="password" class="confirm_password" name="confirm_password" required
-        placeholder="Password">
-        </div>
+        placeholder="Password" id="password-input">
+      </div>    
+      <div class="input-group">
+      <label for="confirm_password">Confirm Password:</label>
+      <input class="input-text" type="password" class="confirm_password" name="confirm_password" required
+      placeholder="Password">
+    </div>
         <div class="checkbox-group">
         <label for="age">I am 13+ years of age:</label>
         <input type="checkbox" class="age" name="age" required>
