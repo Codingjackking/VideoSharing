@@ -4,23 +4,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>User Profile</title>
-	<link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+	<link rel="stylesheet" href="../css/profile-style.css">
+    <script defer src="../js/menu.js"></script>
+  </head>
+  <body>
     <header>
-      <h1>MeTube</h1>
+      <div class="hamburger" onclick="menu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="logo"> MeTube </div>     
+      <div class = "container">
+        <aside class="sidebar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="registration.html">Register</a></li>
+          <li><a href="postview.html">Browse</a></li>
+          <li><a href="postvideo.html">MeTube Studio</a></li>
+          <li><a href="profile.html">Profile</a></li> 
+          </ul>
+        </aside>
+      </div>
     </header>
-	<nav class="menu">
-		<ul>
-			<li><a href="index.html">Home</a></li>
-			<li><a href="login.html">Login</a></li>
-		    <li><a href="registration.html">Register</a></li>
-			<li><a href="postview.html">Browse</a></li>
-			<li><a href="postvideo.html">MeTube Studio</a></li>
-			<li><a href="profile.html">Profile</a></li>
-			<li><a href="#">Logout</a></li>
-		</ul>
-	</nav>
 	<main>
 		<h2>User Profile</h2>
 		<div class="profile-info">
