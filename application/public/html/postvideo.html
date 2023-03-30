@@ -4,23 +4,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Post Video</title>
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/postvideo-style.css">
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <script defer src="../js/menu.js"></script>
 </head>
-<body>
-	<header>
-      <h1>MeTube</h1>
-	</header>
-		<nav class="menu">
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="login.html">Login</a></li>
-		    	<li><a href="registration.html">Register</a></li>
-				<li><a href="postview.html">Browse</a></li>
-				<li><a href="postvideo.html">MeTube Studio</a></li>
-				<li><a href="profile.html">Profile</a></li>
-				<li><a href="#">Logout</a></li>
-			</ul>
-		</nav>
+  <body>
+    <header>
+      <div class="hamburger" onclick="menu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="logo" onclick="window.location.href='index.html'">MeTube</div>
+      <div class = "container">
+        <aside class="sidebar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="registration.html">Register</a></li>
+          <li><a href="postview.html">Browse</a></li>
+          <li><a href="postvideo.html">MeTube Studio</a></li>
+          <li><a href="profile.html">Profile</a></li> 
+          </ul>
+        </aside>
+      </div>
+    </header>
 	<main>
 		<h2>Post a Video</h2>
 		<form action="#" method="POST">

@@ -4,38 +4,53 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	  <title>Home</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/index-style.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <script defer src="../js/menu.js"></script>
+    <script defer src="../js/photo.js"></script>
   </head>
   <body>
     <header>
-      <h1>
-        MeTube
-      </h1>
+      <div class="hamburger" onclick="menu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="logo" onclick="window.location.href='index.html'">MeTube</div>
+      <div class = "container">
+        <aside class="sidebar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="registration.html">Register</a></li>
+          <li><a href="postview.html">Browse</a></li>
+          <li><a href="postvideo.html">MeTube Studio</a></li>
+          <li><a href="profile.html">Profile</a></li> 
+        </ul>
+        </aside>
+      </div>
     </header>
-    <nav class="menu">
+    <div class="content">
+    <main>
+      <h1>Welcome to My Website</h1>
+      <p>Assignment 2: Designed the structure of the website</p>
+      <p>Assignment 3: Styled the website.</p>
+      <p>Assignment 4: Added a photo galley and switch from a nav bar to a hamburger menu. Added registration capability.</p>
+      <h2>Photo Gallery</h2>
+      <p>Number of photos: <span id="photo-count"></span></p>    
+    </main>
+    <div id="photo-gallery"></div>
+    <footer class="footnote">
       <ul>
-		    <li><a href="index.html">Home</a></li>
-	    	<li><a href="login.html">Login</a></li>
-   		  <li><a href="registration.html">Register</a></li>
-		    <li><a href="postview.html">Browse</a></li>
-        <li><a href="postvideo.html">MeTube Studio</a></li>
-	    	<li><a href="profile.html">Profile</a></li>   
-	   </ul>
-    </nav>
-    <section>
-      <h2>Welcome to My Website</h2>
-      <p>This is gonna be assignment 2 website for csc317 which will be made better later on for future assignment and it is probably bad.</p>
-      <p>Updated for assignment 3, website still look bad</p>
-    </section>
-	<footer class="footnote">
-	  <ul>
-	  <li><a href="terms.html">Terms of Service</a></li>
-	  <li><a href="about.html">About US</a></li>
-	  <li><a href="privacy.html">Privacy Notice</a></li>
-    <li><a href="contact.html">Help</a></li>
-    </ul>
-	  <p>Copyright &copy; Naing Htet 2023. All rights reserved.</p>
-	</footer>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="about.html">About US</a></li>
+        <li><a href="privacy.html">Privacy Notice</a></li>
+        <li><a href="contact.html">Help</a></li>
+      </ul>
+      <p>Copyright &copy; Naing Htet 2023. All rights reserved.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   </body>
 </html>
