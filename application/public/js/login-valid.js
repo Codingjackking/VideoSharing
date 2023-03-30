@@ -1,10 +1,11 @@
-const form = documen.getElementById("log=form");
+/* Identifiers */
+const form = document.getElementById("log=form");
 const credentialInput = document.getElementById("credential");
 const passwordInput = document.getElementsByName("password")[0];
-
 const credentialRegex = /^[a-zA-Z][a-zA-Z0-9_]{2,}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
 
+/*Login Validation */
 function validation() {
     let valid = true;
 

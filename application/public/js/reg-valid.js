@@ -1,45 +1,81 @@
-const form = document.getElementById("reg-form");
-const usernameInput = document.getElementById("username");
-const emailInput = document.getElementsByName("email")[0];
-const passwordInput = document.getElementsByName("password")[0];
-const confirmInput = document.getElementsByName("confirm_password")[0];
+/* Form */
+const form = document.getElementById("reg-form")
 
-const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{2,}$/;
-const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\/*\-+!@#$%^&~\[\]])[a-zA-Z0-9\/*\-+!@#$%^&~\[\]]{8,}$/;
+/* Username */
+const usernameInput = document.getElementById("username");
+const usernameRequirements = [
+  document.getElementById("username-requirement1"),
+  document.getElementById("username-requirement2")
+];
+
+/* Email */
+const emailInput = document.getElementById("email");
+const emailRequirement = document.getElementById("email-requirement");
+
+/* Password */
+const passwordInput = document.getElementById("password");
+const passwordRequirements = [
+  document.getElementById("pass-requirement1"),
+  document.getElementById("pass-requirement2"),
+  document.getElementById("pass-requirement3"),
+  document.getElementById("pass-requirement4")
+];
+const confirmInput = document.getElementById("confirm-password");
+const confirmRequirement = document.getElementById("conf-pass-requirement");
+
+/* Regex */
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function validation() {
-    let result = "success"; // Assume success by default
+/* User Validation */
+usernameInput.addEventListener("input", () => {
+  const inputValue = usernameInput.value;
+  const isAlphabetic = /[a-zA-Z]/.test(inputValue);
+  const isLengthValid = /^.{3,}$/.test(inputValue);
+  usernameRequirements[0].style.color = isAlphabetic ? "green" : "red";
+  usernameRequirements[1].style.color = isLengthValid ? "green" : "red";
+});
 
-    if (!usernameRegex.test(usernameInput.value)) {
-        result = "failure";
-        alert("Please enter a valid username that starts with a letter and is at 3 least characters long.");   
-    }
+/* Email Validation */
+emailInput.addEventListener("input", () => {
+  const inputValue = emailInput.value;
+  const isEmailValid = emailRegex.test(inputValue);
+  emailRequirement.style.color = isEmailValid ? "green" : "red";
+});
 
-    if (!passwordRegex.test(passwordInput.value)) {
-        result = "failure";
-        alert("Please enter a valid password that is at least 8 characters long and contain at least 1 uppercase letter, 1 number, and 1 of the following special characters: / * - + ! @ # $ ^ & ~ [ ]");
-    }
-    else if (passwordInput.value != confirmInput.value) {
-        result = "failure";
-        alert("Passwords do not match. Please enter the same password in both fields");
-    }
+/* Password Validation */
+passwordInput.addEventListener("input", () => {
+  const inputValue = passwordInput.value;
+  const isLengthValid = /^.{8,}$/.test(inputValue);
+  const hasUpperCase = /[A-Z]/.test(inputValue);
+  const hasNumber = /[1-9]/.test(inputValue);
+  const hasSymbol = /[\/*\-+!@#$%^&~\[\]]/.test(inputValue);
+  passwordRequirements[0].style.color = isLengthValid ? "green" : "red";
+  passwordRequirements[1].style.color = hasUpperCase ? "green" : "red";
+  passwordRequirements[2].style.color = hasNumber ? "green" : "red";
+  passwordRequirements[3].style.color = hasSymbol ? "green" : "red";
+});
+confirmInput.addEventListener("input", () => {
+  const passValue = passwordInput.value;
+  const confirmValue = confirmInput.value;
+  const isMatched = confirmValue === passValue;
+  confirmRequirement.style.color = isMatched ? "green" : "red";
+});
 
-    if (!emailRegex.test(emailInput.value)) {
-        result = "failure";
-        alert("Please enter a valid email address.");
-    }
-
-    return result;
-}
-
-form.addEventListener("submit", function(ev) {
-    const result = validation();
-    if (result === "failure") {
-        alert("Registration failed. Please check your inputs and try again.");
-        ev.preventDefault();
-    }
-    else {
-        alert("Registration successful!");
-    }
+/* Form Validation */
+form.addEventListener("submit", (event) => {
+  const usernameValue = usernameInput.value;
+  const emailValue = emailInput.value;
+  const passwordValue = passwordInput.value;
+  const confirmValue = confirmInput.value;
+  const isUsernameValid = /[a-zA-Z]/.test(usernameValue) && /^.{3,}$/.test(usernameValue);
+  const isEmailValid = emailRegex.test(emailValue);
+  const isPasswordValid = /^.{8,}$/.test(passwordValue) && /[A-Z]/.test(passwordValue) &&
+                          /[1-9]/.test(passwordValue) && /[\/*\-+!@#$%^&~\[\]]/.test(passwordValue);
+  const isConfirmed = confirmValue === passwordValue;
+  
+  if (isUsernameValid && isEmailValid && isPasswordValid && isConfirmed) {
+    return;
+  } else {
+    event.preventDefault();
+  }
 });

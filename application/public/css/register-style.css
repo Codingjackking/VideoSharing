@@ -180,6 +180,16 @@ input[type="submit"] {
     margin-top: 10px;
     margin-bottom: 20px;
 }
+
+/* Requirements */
+.requirements {
+    display: none;
+    color: red;
+}
+  
+.input-group:focus-within .requirements {
+    display: block;
+}
   
 /* Footer */
 footer {

@@ -6,6 +6,8 @@
     <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0" />
     <title>Registration</title>
 	  <link rel="stylesheet" type="text/css" href="../css/register-style.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <script defer src="../js/reg-valid.js"></script>
     <script defer src="../js/menu.js"></script>
   </head>
@@ -16,7 +18,7 @@
         <div class="line"></div>
         <div class="line"></div>
       </div>
-      <div class="logo"> MeTube </div>     
+      <div class="logo" onclick="window.location.href='index.html'">MeTube</div>
       <div class = "container">
         <aside class="sidebar">
         <ul>
@@ -33,40 +35,46 @@
     <main>
       <h2>Registration Form</h2>
       <form id="reg-form">
-        <div class="input-group" class="form-container">
-        <label for="username">Username:</label>
-        <input class="input-text" id="username" type="username" class="username" name="username" required
-        placeholder="Username">
-        <label for="email">Email:</label>
-        <input class="input-text" type="email" class="email" name="email" required
-        placeholder="Email">
-      </div>
-      <div class="input-group">
-        <label for="password">Password:</label>
-        <input class="input-text" type="password" class="password" name="password" required
-        placeholder="Password" id="password-input">
-      </div>    
-      <div class="input-group">
-      <label for="confirm_password">Confirm Password:</label>
-      <input class="input-text" type="password" class="confirm_password" name="confirm_password" required
-      placeholder="Password">
-    </div>
-        <div class="checkbox-group">
-        <label for="age">I am 13+ years of age:</label>
-        <input type="checkbox" class="age" name="age" required>
+        <div class="input-group">
+          <label for="username">Username:</label>
+          <input class="input-text" type="text" id="username" class="username" name="username" placeholder="Username" aria-describedby="username-requirement1 username-requirement2">
+          <div class="requirements" id="username-requirement1">Username should start with a letter</div>
+          <div class="requirements" id="username-requirement2">Username should be at least 3 characters long</div>
+        </div>
+        <div class="input-group">
+          <label for="email">Email:</label>
+          <input class="input-text" type="email" id="email" class="email" name="email" placeholder="Email" aria-describedby="email-requirement">
+          <div class="requirements" id="email-requirement">Please enter a valid email address.</div>
+        </div>
+        <div class="input-group">
+          <label for="password">Password:</label>
+          <input class="input-text" type="password" id="password" class="password" name="password" placeholder="Password" aria-describedby="pass-requirement1 pass-requirement2 pass-requirement3 pass-requirement4">
+          <div class="requirements" id="pass-requirement1">Password should be at least 8 characters long.</div>
+          <div class="requirements" id="pass-requirement2">Password should contain at least 1 uppercase letter.</div>
+          <div class="requirements" id="pass-requirement3">Password should contain at least 1 digit.</div>
+          <div class="requirements" id="pass-requirement4">Password should contain at least 1 special character.</div>
+        </div>
+        <div class="input-group">
+          <label for="confirm-password">Confirm Password:</label>
+          <input class="input-text" type="password" id="confirm-password" class="confirm-password" name="confirm-password" required placeholder="Confirm Password" aria-describedby="conf-pass-requirement">
+          <div class="requirements" id="conf-pass-requirement">Passwords should match.</div>
         </div>
         <div class="checkbox-group">
-        <label for="tos">I accept the <a href="tos.html">TOS</a> and <a href="privacy.html">Privacy Rules</a>:</label>
-        <input type="checkbox" class="tos" name="tos" required>
+          <label for="age">I am 13+ years of age:</label>
+          <input type="checkbox" class="age" name="age" required>
+        </div>
+        <div class="checkbox-group">
+          <label for="tos">I accept the <a href="tos.html">TOS</a> and <a href="privacy.html">Privacy Rules</a>:</label>
+          <input type="checkbox" class="tos" name="tos" required>
         </div>
         <input type="submit" value="Register">
       </form>
-	  <div class="divider">
-      <hr>
-      <span>Already have an account? </span> 
-      <a href="login.html">Sign In</a>
-      </hr>
-    </div>
+	    <div class="divider">
+        <hr>
+        <span>Already have an account? </span> 
+        <a href="login.html">Sign In</a>
+        </hr>
+      </div>
     </main>
     <footer class="footnote">
       <ul>
