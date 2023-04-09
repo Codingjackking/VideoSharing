@@ -1,6 +1,6 @@
 /* Form */
 const form = document.getElementById("reg-form")
-
+console.log("form", form);
 /* Username */
 const usernameInput = document.getElementById("username");
 const usernameRequirements = [
@@ -28,6 +28,7 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /* User Validation */
 usernameInput.addEventListener("input", () => {
+  console.log("Username input event fired");
   const inputValue = usernameInput.value;
   const isAlphabetic = /[a-zA-Z]/.test(inputValue);
   const isLengthValid = /^.{3,}$/.test(inputValue);
@@ -37,6 +38,7 @@ usernameInput.addEventListener("input", () => {
 
 /* Email Validation */
 emailInput.addEventListener("input", () => {
+  console.log("Email input event fired");
   const inputValue = emailInput.value;
   const isEmailValid = emailRegex.test(inputValue);
   emailRequirement.style.color = isEmailValid ? "green" : "red";
@@ -44,6 +46,7 @@ emailInput.addEventListener("input", () => {
 
 /* Password Validation */
 passwordInput.addEventListener("input", () => {
+  console.log("Password input event fired");
   const inputValue = passwordInput.value;
   const isLengthValid = /^.{8,}$/.test(inputValue);
   const hasUpperCase = /[A-Z]/.test(inputValue);
@@ -55,6 +58,7 @@ passwordInput.addEventListener("input", () => {
   passwordRequirements[3].style.color = hasSymbol ? "green" : "red";
 });
 confirmInput.addEventListener("input", () => {
+  console.log("Confirm password input event fired");
   const passValue = passwordInput.value;
   const confirmValue = confirmInput.value;
   const isMatched = confirmValue === passValue;
@@ -63,6 +67,7 @@ confirmInput.addEventListener("input", () => {
 
 /* Form Validation */
 form.addEventListener("submit", (event) => {
+  console.log("Form submit event fired");
   const usernameValue = usernameInput.value;
   const emailValue = emailInput.value;
   const passwordValue = passwordInput.value;
@@ -74,8 +79,10 @@ form.addEventListener("submit", (event) => {
   const isConfirmed = confirmValue === passwordValue;
   
   if (isUsernameValid && isEmailValid && isPasswordValid && isConfirmed) {
+    console.log("Form submitted successfully");
     return;
   } else {
+    console.log("Form validation failed");
     event.preventDefault();
   }
 });
