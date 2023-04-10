@@ -1,5 +1,5 @@
 /* Form */
-const form = document.getElementById("reg-form")
+const form = document.getElementById("reg-form");
 console.log("form", form);
 /* Username */
 const usernameInput = document.getElementById("username");
@@ -80,9 +80,9 @@ form.addEventListener("submit", (event) => {
   
   if (isUsernameValid && isEmailValid && isPasswordValid && isConfirmed) {
     console.log("Form submitted successfully");
-    return;
+    return; /* Refresh the screen */
   } else {
     console.log("Form validation failed");
-    event.preventDefault();
+    event.preventDefault(); 
   }
 });
