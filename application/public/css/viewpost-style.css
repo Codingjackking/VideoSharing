@@ -1,4 +1,12 @@
-/* Content */
+/* Video */
+.video-container video {
+    width: 40%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+/*Content */
 .input-textarea {
     display: flex;
     width: 100%;
@@ -16,15 +24,12 @@
 .input-textarea::placeholder {
     color: #999;
 }
-  
-input[type="submit"] {
-    background-color: #ff9900;
-    color: #fff;
+
+button[type="submit"] {
     padding: 10px;
     border: none;
     border-radius: 4px;
-    font-size: 18px;
+    font-size: 12px;
     cursor: pointer;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 15px;
 }

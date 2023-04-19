@@ -1,0 +1,27 @@
+
+<main>
+	<h2>Post a Video</h2>
+	<form action="#" method="POST">
+		<div class="input-group">
+			<label for="title">Title:</label>
+			<input class="input-text" type="text" id="title" name="title" required
+			placeholder="Title">
+		</div>
+		<div class="input-group">
+			<label for="description">Description:</label>
+			<textarea class="input-textarea" name="description" required
+			placeholder="Description of Video"></textarea>
+		</div>
+		<div class="video-group">
+			<label for="video">Video:</label>
+			<input type="file" id="video" name="video" accept="video/*" required>
+		</div>
+		<div class="policy">
+			<label>
+				<input type="checkbox" name="policy" required>
+				I accept the <a href="terms.html">Acceptable Use Policy</a>.
+			</label>
+		</div>
+		<input type="submit" value="Post Video">
+	</form>
+</main>

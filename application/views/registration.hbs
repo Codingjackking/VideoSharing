@@ -1,0 +1,44 @@
+<main>
+  <h2>Registration Form</h2>
+  <form id="reg-form">
+    <div class="input-group">
+      <label for="username">Username:</label>
+      <input class="input-text" type="text" id="username" name="username" placeholder="Username" aria-describedby="username-requirement1 username-requirement2">
+      <div class="requirements" id="username-requirement1">Username should start with a letter</div>
+      <div class="requirements" id="username-requirement2">Username should be at least 3 characters long</div>
+    </div>
+    <div class="input-group">
+      <label for="email">Email:</label>
+      <input class="input-text" type="email" id="email" name="email" placeholder="Email" aria-describedby="email-requirement">
+      <div class="requirements" id="email-requirement">Please enter a valid email address.</div>
+    </div>
+    <div class="input-group">
+      <label for="password">Password:</label>
+      <input class="input-text" type="password" id="password" name="password" placeholder="Password" aria-describedby="pass-requirement1 pass-requirement2 pass-requirement3 pass-requirement4">
+      <div class="requirements" id="pass-requirement1">Password should be at least 8 characters long.</div>
+      <div class="requirements" id="pass-requirement2">Password should contain at least 1 uppercase letter.</div>
+      <div class="requirements" id="pass-requirement3">Password should contain at least 1 digit.</div>
+      <div class="requirements" id="pass-requirement4">Password should contain at least 1 special character.</div>
+    </div>
+    <div class="input-group">
+      <label for="confirm-password">Confirm Password:</label>
+      <input class="input-text" type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm Password" aria-describedby="conf-pass-requirement">
+      <div class="requirements" id="conf-pass-requirement">Passwords should match.</div>
+    </div>
+    <div class="checkbox-group">
+      <label for="age">I am 13+ years of age:</label>
+      <input type="checkbox" class="age" name="age" required>
+    </div>
+    <div class="checkbox-group">
+      <label for="tos">I accept the <a href="#">TOS</a> and <a href="#">Privacy Rules</a>:</label>
+      <input type="checkbox" class="tos" name="tos" required>
+    </div>
+    <input type="submit" value="Register">
+  </form>
+	<div class="divider">
+    <hr>
+    <span>Already have an account? </span> 
+    <a href="login">Sign In</a>
+    </hr>
+  </div>
+</main>
