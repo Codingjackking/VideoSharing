@@ -1,3 +1,4 @@
+require('dotenv').config();
 const createError = require("http-errors");
 const express = require("express");
 const favicon = require('serve-favicon');
@@ -7,8 +8,10 @@ const logger = require("morgan");
 const handlebars = require("express-handlebars");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-
 const app = express();
+const helper = require("./helpers/getFirstLetter");
+const sessions = require('express-session');
+const mysqlStore = require("express-mysql-session")(sessions);
 
 app.engine(
   "hbs",
@@ -17,7 +20,7 @@ app.engine(
     partialsDir: path.join(__dirname, "views/partials"), // where to look for partials
     extname: ".hbs", //expected file extension for handlebars files
     defaultLayout: "layout", //default layout for app, general template for all pages in app
-    helpers: {}, //adding new helpers to handlebars for extra functionality
+    helpers: {helper}, //adding new helpers to handlebars for extra functionality
   })
 );
 
@@ -25,18 +28,38 @@ app.engine(
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
+const sessionStore = new mysqlStore({/* default options */}, require('./conf/database'));
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser("csc 317 secret"));
 
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use("/public", express.static(path.join(__dirname, "public")));
 
+app.use(sessions({
+  secret: "csc 317 secret",
+  resave: false,
+  saveUninitialized: true,
+  store: sessionStore,
+  cookie: {
+    httpOnly: true,
+    secure: false
+  }
+}));
+
+app.use(function (req, res, next) {
+  console.log(req.session);
+  if (req.session.user) {
+    res.locals.isLoggedIn = true;
+    res.locals.user = req.session.user;
+  }
+  next();
+});
+
 app.use("/", indexRouter); // route middleware from ./routes/index.js
 app.use("/users", usersRouter); // route middleware from ./routes/users.js
-
 
 /**
  * Catch all route, if we get to here then the 
@@ -46,7 +69,6 @@ app.use((req,res,next) => {
   next(createError(404, `The route ${req.method} : ${req.url} does not exist.`));
 })
   
-
 /**
  * Error Handler, used to render the error html file
  * with relevant error information.

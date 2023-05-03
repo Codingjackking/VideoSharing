@@ -1,6 +1,8 @@
 <main>
   <h2>Registration Form</h2>
-  <form id="reg-form">
+  <form id="reg-form" class="input-form",
+  action="/users/register" 
+  method="POST" enctype="application/x-www-form-urlencoded">
     <div class="input-group">
       <label for="username">Username:</label>
       <input class="input-text" type="text" id="username" name="username" placeholder="Username" aria-describedby="username-requirement1 username-requirement2">
@@ -22,23 +24,23 @@
     </div>
     <div class="input-group">
       <label for="confirm-password">Confirm Password:</label>
-      <input class="input-text" type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm Password" aria-describedby="conf-pass-requirement">
+      <input class="input-text" type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm Password" aria-describedby="conf-pass-requirement">
       <div class="requirements" id="conf-pass-requirement">Passwords should match.</div>
     </div>
     <div class="checkbox-group">
       <label for="age">I am 13+ years of age:</label>
-      <input type="checkbox" class="age" name="age" required>
+      <input type="checkbox" class="age" name="ageCheck" required>
     </div>
     <div class="checkbox-group">
       <label for="tos">I accept the <a href="#">TOS</a> and <a href="#">Privacy Rules</a>:</label>
-      <input type="checkbox" class="tos" name="tos" required>
+      <input type="checkbox" class="tos" name="tosCheck" required>
     </div>
     <input type="submit" value="Register">
   </form>
 	<div class="divider">
     <hr>
     <span>Already have an account? </span> 
-    <a href="login">Sign In</a>
+    <a href="/login">Sign In</a>
     </hr>
   </div>
 </main>

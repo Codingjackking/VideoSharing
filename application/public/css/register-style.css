@@ -57,7 +57,6 @@ h3 {
     padding: 10px;
     border: 2px solid #ddd;
     border-radius: 4px;
-    margin-bottom: 20px;
     box-shadow: 0px 0px 4px black;
 }
 
@@ -87,9 +86,13 @@ input[type="submit"] {
 /* Requirements */
 .requirements {
     display: none;
+    width: 40%;
+    padding: 2px;
+    border: 1px solid black;
     color: red;
 }
   
 .input-group:focus-within .requirements {
     display: block;
+    font-size: 1rem;
 }

@@ -1,8 +1,9 @@
 <main>
+{{log this}}
 	<h2>User Profile</h2>
 	<div class="profile-info">
-		<p><strong>Username:</strong> JohnDoe</p>
-		<p><strong>Email:</strong> johndoe@example.com</p>
+		<p><strong>Username:</strong> {{username}}</p>
+		<p><strong>Email:</strong> {{email}}</p>
 	</div>
 	<div class="posts">
 		<h2>Posts</h2>
@@ -12,5 +13,7 @@
 			<li><a href="#">Post 3</a></li>
 		</ul>
 	</div>
+	<form action="/users/logout" method="POST">
+		<button type="submit">Logout</button>
+	</form>
 </main>
-

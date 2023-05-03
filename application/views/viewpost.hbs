@@ -1,9 +1,9 @@
 <main>
-  <h2>Post Title</h2>
-  <p>Author: John Doe</p>
-  <p>Created: January 1, 2023</p>
-  <div class="video-container">
-    <video src="public/videos/Get_Trolled.mp4" controls autoplay loop></video>
+  <h2>{{title}}</h2>
+  <p>Author: {{author}}</p>
+  <p>Created: {{date}}</p>
+  <div class="post-container" id="post-container">
+    <video src="/public/videos/Get_Trolled.mp4" controls autoplay loop></video>
   </div>
   <h3>Comments</h3>
   <form>
@@ -17,4 +17,7 @@
     </div>
     <button type="submit">Submit</button>
   </form>
+<button class="jump-to-top-button" onclick="jumpToTop()">
+<span class="fa fa-angle-up"></span>
+</button>
 </main>

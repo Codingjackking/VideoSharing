@@ -1,25 +1,28 @@
-<!DOCTYPE html>
-<html>
+
  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{pageTitle}}</title>
-    <link rel="stylesheet" href="public/css/style.css">
-    <link rel="icon" href="public/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="public/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
     {{#each css}}
-      <link rel="stylesheet" type="text/css" href="/public/css/{{this}}" />
+      <link rel="stylesheet" type="text/css" href="/public/css/{{this}}">
+    {{/each}} 
+    {{#each font}}
+      <link rel="stylesheet" href="{{this}}">
     {{/each}}
     {{#each js}}
       <script defer src="/public/js/{{this}}"></script>
-    {{/each}}
+    {{/each}} 
   </head>
   <body>
     {{log this}}
     <div id="container">
       {{> header}}
       {{> nav}}
+      {{> icon}}
     <div class="content">
       {{{body}}}
     </div>
@@ -27,4 +30,4 @@
       {{> footer}}
     </div>
   </body>
-</html>
+

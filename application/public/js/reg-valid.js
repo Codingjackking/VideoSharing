@@ -20,7 +20,7 @@ const passwordRequirements = [
   document.getElementById("pass-requirement3"),
   document.getElementById("pass-requirement4")
 ];
-const confirmInput = document.getElementById("confirm-password");
+const confirmInput = document.getElementById("confirmPassword");
 const confirmRequirement = document.getElementById("conf-pass-requirement");
 
 /* Regex */

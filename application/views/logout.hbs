@@ -1,0 +1,12 @@
+<main class="content">
+<div class="circle">
+<i class="fa fa-check fa-sharp fa-3x"></i>
+</div>
+<p class="message">{{message}}</p>
+    <p>You will be redirected to Login in 3 seconds</p>
+    <script>
+        var timer = setTimeout(function() {
+            window.location='/login'
+        }, 3000);
+    </script>
+</main>
