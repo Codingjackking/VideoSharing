@@ -9,9 +9,10 @@ const handlebars = require("express-handlebars");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const app = express();
-const helper = require("./helpers/getFirstLetter");
 const sessions = require('express-session');
 const mysqlStore = require("express-mysql-session")(sessions);
+
+const getInitial = require("./helpers/getFirstLetter");
 
 app.engine(
   "hbs",
@@ -20,7 +21,7 @@ app.engine(
     partialsDir: path.join(__dirname, "views/partials"), // where to look for partials
     extname: ".hbs", //expected file extension for handlebars files
     defaultLayout: "layout", //default layout for app, general template for all pages in app
-    helpers: {helper}, //adding new helpers to handlebars for extra functionality
+    helpers: {getInitial}, //adding new helpers to handlebars for extra functionality
   })
 );
 

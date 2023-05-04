@@ -1,16 +1,32 @@
 {{#if isLoggedIn}}
-<div class="avatar-dropdown">
-  <div class="avatar-circle">{{helper user.username}}</div>
+<div class="icon-wrapper">
+  <div class="avatar-circle" onclick="iconMenu()">{{getInitial user.username}}</div>
   <div class="dropdown-menu">
-    <button class="button-dropdown nav-items">Hi {{user.username}}</button>
-    <a class="dropdown-menu-items" href="/users/profile/{{user.userId}}">Profile</a>
-    <form action="/users/logout" method="post">
-      <button class="nav-items" type="submit">Log out</button>
-    </form>
+    <div class="info-container">
+      <div class="user-info">
+        <div class="avatar-scircle">{{getInitial user.username}}</div>
+        <p>{{user.username}}</p>
+      </div>
+    </div>
+    <ul>
+      {{#each links}}
+        <div>
+          <li><a href="/users/profile/{{user.userId}}">Your Channel</a></li>
+        </div>
+        <div>
+         <li><a href="{{this.link}}">{{this.text}}</a></li>
+        </div>
+      {{/each}}  
+      <li>
+        <form action="/users/logout" method="post">
+          <button class="logout" type="submit">Log out</button>
+        </form>
+      </li>
+    </ul>  
   </div>
 </div>
   {{else}}
     <div class="nav-items">
       <a href="/login" class="login-button">Sign In</a>     
-      </div>
+    </div>
   {{/if}}
