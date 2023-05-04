@@ -12,7 +12,7 @@ function buildNavBar(req, res, next) {
 
 function buildMenu(req, res, next) {
   res.locals.links = [
-    { text: "MeTube Studio", link: "/postvideo" },
+    { text: "MeTube Studio", link: "/postvideo" }
   ],
   next();
 }
@@ -51,7 +51,7 @@ router.get("/login", buildNavBar, buildFooter, async function(req, res, next) {
   });
 })
 
-router.get("/profile", buildNavBar, buildMenu, buildFooter, async function(req, res, next) {
+router.get("/profile", buildNavBar, buildFooter, async function(req, res, next) {
   res.render('profile', {
     css: ["profile-style.css"],
     js: ["menu.js"],
@@ -67,7 +67,7 @@ router.get("/postvideo", buildNavBar, buildMenu, buildFooter, async function(req
   });
 })
 
-router.get('/viewpost/', buildNavBar, buildMenu, buildFooter, async function(req, res, next) {
+router.get('/viewpost', buildNavBar, buildMenu, buildFooter, async function(req, res, next) {
   res.render('viewpost', {
     css: ["viewpost-style.css"],
     font: ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"],
@@ -76,5 +76,11 @@ router.get('/viewpost/', buildNavBar, buildMenu, buildFooter, async function(req
     title: 'Post Dashboard'
   });
 })
-
+router.get('/logout', buildFooter, async function(req, res, next) {
+  res.render('logout', {
+    css: ["logout-style.css"],
+    font: ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"],
+    pageTitle: 'Log Out'
+  });
+})
 module.exports = router;

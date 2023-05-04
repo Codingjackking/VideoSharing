@@ -11,6 +11,7 @@ const usersRouter = require("./routes/users");
 const app = express();
 const sessions = require('express-session');
 const mysqlStore = require("express-mysql-session")(sessions);
+const flash = require('express-flash');
 
 const getInitial = require("./helpers/getFirstLetter");
 
@@ -21,7 +22,13 @@ app.engine(
     partialsDir: path.join(__dirname, "views/partials"), // where to look for partials
     extname: ".hbs", //expected file extension for handlebars files
     defaultLayout: "layout", //default layout for app, general template for all pages in app
-    helpers: {getInitial}, //adding new helpers to handlebars for extra functionality
+    helpers: {
+      nonEmptyObject: function(obj) {
+        return obj && obj.constructor === Object && Object.
+        keys(obj).length > 0;
+      },
+      getInitial
+    }, //adding new helpers to handlebars for extra functionality
   })
 );
 
@@ -49,6 +56,8 @@ app.use(sessions({
     secure: false
   }
 }));
+
+app.use(flash());
 
 app.use(function (req, res, next) {
   console.log(req.session);

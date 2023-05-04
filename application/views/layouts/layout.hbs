@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
+    <script defer src="public/js/messages.js"></script>
+
     {{#each css}}
       <link rel="stylesheet" type="text/css" href="/public/css/{{this}}">
     {{/each}} 
@@ -18,15 +20,14 @@
     {{/each}} 
   </head>
   <body>
-    {{log this}}
     <div id="container">
+      {{#if (nonEmptyObject messages)}}
+      {{> flashmessage this}}
+      {{/if}}
       {{> header}}
       {{>nav}}
       {{> icon}}
-    <div class="content">
       {{{body}}}
-    </div>
-    <div class="footnote">
       {{> footer}}
     </div>
   </body>

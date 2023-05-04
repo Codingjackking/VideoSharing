@@ -40,45 +40,13 @@ function buildFooter(req, res, next){
   ],
   next();
 }
-/*
-router.post('/register', async function(req, res, next) {
-  var { username, email, password} = req.body;
-  try {
-    var [rows, fields] = await db.execute(
-      `SELECT id from users where username=?`,
-      [username]
-    )
-    if (rows && rows.length > 0) {
-      return res.redirect("/register");
-    }
-    var [rows, fields] = await db.execute(
-      `SELECT id from users where email=?`,
-      [email]
-    )
-    if (rows && rows.length > 0) {
-      return res.redirect("/register");
-    }
-    var hashedpassword = await bcrypt.hash(password, 3);
-    var [resultObject, fields] = await db.execute(
-      `INSERT INTO users (username, email, password) VALUES (?, ?, ?);`,
-      [username, email, hashedpassword]
-    );
-    if (resultObject && resultObject.affectedRows == 1) {
-      res.redirect('/login');
-    } else {
-      return res.redirect('/register');
-    }
-  } catch (error) {
-    next(error);
-  }
-});
-*/
 
 function checkExistingUser(req, res, next) {
   var { username, email } = req.body;
   db.execute(`SELECT id from users where username=? OR email=?`, [username, email])
     .then(([rows, fields]) => {
       if (rows && rows.length > 0) {
+        req.flash("error", `Username or email already exists`);
         return res.redirect('/register');
       } else {
         next();
@@ -98,16 +66,16 @@ router.post('/register', checkExistingUser, async function(req, res, next) {
       [username, email, hashedpassword]
     );
     if (resultObject && resultObject.affectedRows == 1) {
+      req.flash("success", `Registration Successful! Please login to continue.`);
       res.redirect('/login');
     } else {
+      req.flash("error", `Registration failed. Please try again.`);
       return res.redirect('/register');
     }
   } catch (error) {
     next(error);
   }
 });
-
-
 
 router.post('/login', async function(req,res, next) {
   var {username, password} = req.body;
@@ -120,8 +88,12 @@ router.post('/login', async function(req,res, next) {
       [username]);
       var user = users[0];
       if (!user) {
-        return res.redirect("/login");
-      } else {
+        req.flash("error", `Log In Failed: Invalid username/password`);
+        req.session.save(function(err){        
+          return res.redirect("/login");
+      })
+    }
+      else {
         var passwordsMatch = await bcrypt.compare(password, user.password)
         if (passwordsMatch) {
           req.session.user = {
@@ -129,8 +101,11 @@ router.post('/login', async function(req,res, next) {
             email: user.email,
             username: user.username
           };
-        return res.redirect("/");
-        }
+          req.flash("success", `You are now logged in`);
+          req.session.save(function(err){        
+            return res.redirect("/");
+        })        
+      }
         else {
           return res.redirect("/login");
         }
@@ -141,43 +116,18 @@ router.post('/login', async function(req,res, next) {
   router.post("/logout", function (req, res, next) {
     req.session.destroy(function(err) {
       if (err) {
-        next(error);
+        next(err);
       }
-      return res.redirect('/');
+      return res.redirect('/logout');
     })
   });
 
-router.get('/', buildNavBar, buildMenu, buildFooter, async function(req,res, next){
-    res.render('index', { 
-    css: ["index-style.css"],
-    js: ["menu.js", "photo.js"],
-    pageTitle: 'Home',
-  });
-})
 
-router.get('/profile/', buildNavBar, buildMenu, buildFooter, function(req,res,next) {
+router.get('/profile', buildNavBar, buildMenu, buildFooter, function(req,res,next) {
   res.render('profile', {
     css: ["profile-style.css"],
     js: ["menu.js","style.css"],
     pageTitle: 'User Profile',
-  });
-})
-
-router.get("/postvideo", buildNavBar, buildMenu, buildFooter, async function(req, res, next) {
-  res.render('postvideo', {
-    css: ["postvideo-style.css"],
-    js: ["menu.js"],
-    pageTitle: 'MeTube Studio',
-  });
-})
-
-router.get('/viewpost', buildNavBar, buildMenu, buildFooter, async function(req, res, next) {
-  res.render('viewpost', {
-    css: ["viewpost-style.css"],
-    font: ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"],
-    js: ["menu.js", "viewpost.js"],
-    pageTitle: `View Post`,
-    title: 'Post Dashboard'
   });
 })
 
@@ -186,6 +136,7 @@ router.use(function(req, res, next) {
       next();
     }
     else {
+      req.flash("error", `You need to be logged in to gain access.`);
       return res.redirect('/login');
     }
   });
