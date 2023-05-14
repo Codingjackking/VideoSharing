@@ -1,2 +1,18 @@
+main {
+  padding: 20px;
+}
+.grid-container {
+  display: flex;
+  overflow-x: scroll;
+  /*overflow-y: hidden;*/
+  width: 100%;
+  height: 25vh;
+}
 
-  
+.post-container {
+  height: 100%;
+}
+
+.post-container video {
+  height: 100%;
+}

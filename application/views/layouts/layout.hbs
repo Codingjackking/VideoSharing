@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
-    <script defer src="public/js/messages.js"></script>
+    <script defer src="/public/js/messages.js"></script>
 
     {{#each css}}
       <link rel="stylesheet" type="text/css" href="/public/css/{{this}}">
@@ -25,7 +25,7 @@
       {{> flashmessage this}}
       {{/if}}
       {{> header}}
-      {{>nav}}
+      {{> nav}}
       {{> icon}}
       {{{body}}}
       {{> footer}}

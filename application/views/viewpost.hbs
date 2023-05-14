@@ -1,22 +1,31 @@
-<main>
-  <h2>{{title}}</h2>
-  <p>Author: {{author}}</p>
-  <p>Created: {{date}}</p>
-  <div class="post-container" id="post-container">
-    <video src="/public/videos/Get_Trolled.mp4" controls autoplay loop></video>
-  </div>
-  <h3>Comments</h3>
-  <form>
-    <div class="input-group">
-      <label for="credential">Username:</label>
-      <input class="input-text" type="text" id="credential" name="credential" placeholder="Username" required >
-		</div>
-    <div>
-      <label for="comment">Comment: </label>
-      <textarea class="input-textarea" name="comment" placeholder="Add a comment..." required></textarea>
+<main class="post-container">
+  <video class="video-container" controls autoplay loop>
+    <source class="video" src="/{{video}}" type="video/mp4"/>
+  </video>
+  <div class="post-info">
+    <h2 class="post-title">Title: {{title}}</h2>
+    <div class="post-author-date">
+      <p class="username">{{username}}</p>
+      <p class="date-posted">{{date}}</p>
     </div>
-    <button type="submit">Submit</button>
-  </form>
+    <p class="post-description">
+      {{description}}
+    </p>
+  </div>
+  <div class="comment-seection">
+  <div class="comment-box">
+    <textarea id="comment-text" class="comment-box-text"></textarea>
+    <i
+      id="comment-button"
+      class="fa fa-commment comment-box-button"
+      aria-hidden="true"
+    ></i>
+  </div>
+  <div class="comments">
+    {{#each currentPost.comments}}
+      {{> commment this}}
+    {{/each}}
+  </div>
 <button class="jump-to-top-button" onclick="jumpToTop()">
 <span class="fa fa-angle-up"></span>
 </button>

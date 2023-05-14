@@ -1,6 +1,12 @@
+/*Global */
+main {
+    margin: 1 auto;
+    padding: 10px 20px;
+  }
+
 /* Video */
-.video-container video {
-    width: 40%;
+.video-container {
+    width: 35%;
     height: auto;
     aspect-ratio: 16/9;
     object-fit: cover;

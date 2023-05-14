@@ -8,10 +8,10 @@
         <p>{{user.username}}</p>
       </div>
     </div>
-    <ul>
+    <ul>          
+      <li><a href="/users/profile/{{user.userId}}">Your Channel</a></li>
       {{#each links}}
         <div>
-          <li><a href="/users/profile/{{user.userId}}">Your Channel</a></li>
         </div>
         <div>
          <li><a href="{{this.link}}">{{this.text}}</a></li>

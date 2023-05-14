@@ -13,6 +13,7 @@
     font-size: 16px;
     line-height: 1.5;
     color: #333;
+
 }
 /*
 hr {
@@ -122,7 +123,7 @@ hr {
   background-color: whitesmoke;
   border: 1px solid gray;
   transition: 0.5s;
-  z-index: 1;
+  z-index: 3;
   display: none;
   padding: 0;
 }
@@ -179,7 +180,7 @@ hr {
     background-color: #f1f1f1;
     overflow-x: hidden;
     transition: 0.5s;
-    z-index: 1;
+    z-index: 3;
 }
   
 .sidebar ul {
@@ -216,7 +217,7 @@ hr {
   .hamburger {
     display: block;
     position: relative;
-    z-index: 2;
+    z-index: 4;
     cursor: pointer;
   }
   
@@ -293,3 +294,17 @@ footer {
     color: #fff;
     text-decoration: none;
   }
+  
+  .footnote {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    padding: 10px;
+    text-align: center;
+    }
+    
+    
+    
+    
+    

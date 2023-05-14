@@ -1,25 +1,43 @@
-
-<main>
+<main class="form-container">
 	<h2>Post a Video</h2>
-	<form action="#" method="POST">
+	<form id="post-image" class="input-form"
+	  action="/posts/create"
+	  method="POST"
+	  enctype="multipart/form-data">
 		<div class="input-group">
-			<label for="title">Title:</label>
-			<input class="input-text" type="text" id="title" name="title" required
-			placeholder="Title">
+			<label for="post-title" class="tags post-1b1-title">Post
+				Title: </label>
+			<input id="post-title"
+				class="input-text"
+			 	type="text"
+				name="title"
+				placeholder="Post Title" 
+				required
+			/>
 		</div>
 		<div class="input-group">
-			<label for="description">Description:</label>
-			<textarea class="input-textarea" name="description" required
-			placeholder="Description of Video"></textarea>
+			<label for="description">Post 
+			Description:</label>
+			<input 
+			id="post-desc"
+			class="text-input post-input-desc" 
+			type="text"
+			name="description" 
+			placeholder="Post Description here..."
+			required />
+			
 		</div>
-		<div class="video-group">
-			<label for="video">Video:</label>
-			<input type="file" id="video" name="video" accept="video/*" required>
-		</div>
-		<div class="policy">
-			<label>
-				<input type="checkbox" name="policy" required>
-				I accept the <a href="terms.html">Acceptable Use Policy</a>.
+			<label class="tags post-1b1-video" for="video">Upload a Video</label>
+			<input 
+				id="img-select"
+				class="text-input post-input-video"
+				type="file"  
+				name="uploadVideo" 
+				required/>
+		<div class="input-group checkout-group">
+			<label class="checkbox aop" for="aup">
+				<input type="checkbox" name="aup" required>
+				I accept the <a href="#">Acceptable Use Policy</a>.
 			</label>
 		</div>
 		<input type="submit" value="Post Video">
