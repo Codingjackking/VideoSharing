@@ -2,16 +2,14 @@ module.exports = {
     buildNavBar: function (req, res, next) {
         res.locals.navLinks = [
           { text: "Home", link: "/" },
-          { text: "Library", link: "/viewpost" },
+          //{ text: "Library", link: "/viewpost" },
         ],
-        console.log();
         next();
     },
     buildMenu: function(req, res, next) {
         res.locals.links = [
           { text: "MeTube Studio", link: "/postvideo" }
         ],
-        console.log();
         next();
     },
     buildFooter: function(req, res, next) {
@@ -21,7 +19,6 @@ module.exports = {
           { text: "Privacy Notice", link: "#" },
           { text: "Help", link: "#" }
         ],
-        console.log();
         next();
       }
 }

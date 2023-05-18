@@ -3,7 +3,7 @@ var router = express.Router();
 var multer = require('multer');
 var db = require('../conf/database');
 var { isLoggedIn } = require('../middleware/auth');
-var { makeThumbnail, getRecentPosts, getPostById, getCommentsForPostById } = require('../middleware/posts');
+var { makeThumbnail, getPostById, getCommentsForPostById } = require('../middleware/posts');
 const { buildNavBar, buildMenu, buildFooter } = require('../middleware/build');
 
 const storage = multer.diskStorage({
@@ -48,19 +48,52 @@ router.post(
         }
 });
 
-router.get("/:id(\\d+)", getPostById, buildNavBar, buildMenu, buildFooter, function(req, res) {
-    res.render('viewpost', {
+router.get("/:id(\\d+)", getPostById, getCommentsForPostById, buildNavBar, buildMenu, buildFooter, function(req, res) {
+      res.render('viewpost', {
       css: ["viewpost-style.css"],
       font: ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"],
       js: ["menu.js", "viewpost.js"],
       pageTitle: `Post Dashboard`,
-      posts: req.posts
+      posts: res.locals.posts
     });
-  })
+})
 
 
-router.get("/search", function(req,res,next) {
+router.get('/search', buildNavBar, buildMenu, buildFooter, async function(req,res,next){
+  var {title} = req.query;
+  try{
+      var[rows, fields] = await db.execute(`select id, title, thumbnail, video, description, createdAt,
+      concat_ws(' ', title, description) 
+      as haystack from posts having haystack like ?;`,
+      [`%${title}%`]);
+      const posts = rows.map(post => ({
+        postId: post.id,
+        title: post.title,
+        description: post.description,
+        video: post.video,
+        thumbnail: post.thumbnail,
+        createdAt: post.createdAt
+      }));
+      res.locals.posts = posts;
+      if(posts && posts.length == 0){
+        req.flash("error", `${title} not found`);
+          return req.session.save(function (err){
+              return res.redirect("/");
+          });
+      }
+      else{
+          res.render('index', {
+            css: ["index-style.css"],
+            js: ["menu.js"],
+            pageTitle: 'Home',
+          }
+          );
+      }
 
+  }
+  catch(error){
+      next(error);
+  }
 });
 
   // GET request for delete form

@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt');
 var { isLoggedIn, isMyProfile } = require("../middleware/auth");
 var { isUsernameUnique, usernameCheck, passwordCheck, emailCheck, isEmailUnique } = require("../middleware/validation");
 const { buildNavBar, buildMenu, buildFooter } = require("../middleware/build");
-var { getRecentPosts, getPostById, getPostsForUserBy } = require("../middleware/posts");
+var { getPostsForUserBy } = require("../middleware/posts");
 
 router.post(
   "/register",
@@ -88,18 +88,13 @@ buildNavBar,
 buildMenu, 
 buildFooter, 
 async function(req, res, next) {  
-  try {
     res.render('profile', {
       css: ['profile-style.css'],
-      js: ['profile.js'],
+      js: ['menu.js'],
       pageTitle: 'Profile',
-      posts: req.posts
+      posts: res.locals.posts
     });
-  } catch (error) {
-    next(error);
-  }
-});
-
+  })
 
 router.use('/postvideo', function (req, res, next) {
   if (req.session.user) {

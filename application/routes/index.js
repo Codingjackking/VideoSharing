@@ -10,7 +10,7 @@ router.get('/', getRecentPosts, buildNavBar, buildMenu, buildFooter, async funct
    css: ["index-style.css"],
    js: ["menu.js"],
    pageTitle: 'Home',
-   posts: req.posts
+   posts: res.locals.posts
    });
  });
 

@@ -1,17 +1,19 @@
 <main class="post-container">
-  <video class="video-container" controls autoplay loop>
+  {{#each posts}}
+  <video class="video-container" controls loop>
     <source class="video" src="/{{video}}" type="video/mp4"/>
   </video>
   <div class="post-info">
     <h2 class="post-title">Title: {{title}}</h2>
     <div class="post-author-date">
       <p class="username">{{username}}</p>
-      <p class="date-posted">{{date}}</p>
+      <p class="date-posted">{{formatDateString createdAt}}</p>
     </div>
     <p class="post-description">
       {{description}}
     </p>
   </div>
+  {{/each}}
   <div class="comment-seection">
   <div class="comment-box">
     <textarea id="comment-text" class="comment-box-text"></textarea>
@@ -22,7 +24,7 @@
     ></i>
   </div>
   <div class="comments">
-    {{#each currentPost.comments}}
+    {{#each posts.comments}}
       {{> commment this}}
     {{/each}}
   </div>

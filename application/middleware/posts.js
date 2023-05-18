@@ -35,9 +35,10 @@ module.exports = {
       const posts = rows.map(post => ({
         postId: post.id,
         video: post.video,
-        thumbnail: post.thumbnail
+        thumbnail: post.thumbnail,
+        createdAt: post.createAt
       }));
-      req.posts = posts;
+      res.locals.posts = posts;
       next();
     } catch (error) {
       next(error);
@@ -49,15 +50,21 @@ module.exports = {
     const postId = req.params.id;
     try {
       const [rows, fields] = await db.execute(
-          'SELECT title, description, video FROM posts WHERE id = ?',
-          [postId]
+        `SELECT u.username, p.video, p.title, p.description, p.id, p.createdAt 
+        FROM posts p 
+        JOIN users u
+        ON p.fk_userId=u.id
+        WHERE p.id=?;`,
+        [postId]
       );
       const posts = rows.map(post => ({
         title: post.title,
         description: post.description,
-        video: post.video
+        video: post.video,
+        username: post.username,
+        createdAt: post.createdAt
       }));
-      req.posts = posts;
+      res.locals.posts = posts;
       next();
     } catch (error) {
       next(error);
@@ -66,19 +73,28 @@ module.exports = {
 
   //getCommentsForPostById --> gets all comments for a post given a postId (for viewpost),
   getCommentsForPostById: async function(req,res,next){
-    next();
+    const postId = req.params.id;
+    try {
+      const [rows, fields] = await db.execute(
+        `SELECT u.username, c.text, c.createdAt 
+        FROM comments c 
+        JOIN users u
+        ON c.fk_authorId=u.id
+        WHERE c.fk_postId=?;`,
+        [postId]
+      );
+        res.locals.posts.comments = rows;
+        next();
+    } catch (error) {
+      next(error);
+    }
   },
+  
 
   //Home Page
   getRecentPosts: async function(req, res, next) {
     try {
-      const [rows, fields] = await db.execute(`
-      SELECT p.*, u.username
-      FROM posts p
-      JOIN users u ON p.fk_userId = u.id
-      ORDER BY p.createdAt DESC
-      LIMIT 10
-    `);
+      const [rows, fields] = await db.execute(`SELECT p.*, u.username FROM posts p JOIN users u ON p.fk_userId = u.id ORDER BY p.createdAt DESC LIMIT 10`);
     const posts = rows.map(post => ({
       postId: post.id,
       title: post.title,
@@ -86,9 +102,10 @@ module.exports = {
       video: post.video,
       thumbnail: post.thumbnail,
       username: post.username,
-      userId: post.fk_userId
+      userId: post.fk_userId,
+      createdAt: post.createdAt
     }));
-    req.posts = posts;
+    res.locals.posts = posts;
     next();
     } catch (error) {
       next(error);
