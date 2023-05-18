@@ -12,25 +12,6 @@ main {
     object-fit: cover;
 }
 
-/*Content */
-.input-textarea {
-    display: flex;
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    font-size: 14px;
-    box-sizing: border-box;
-    outline: none;
-}
-  
-.input-textarea:focus {
-    border-bottom: 1px solid #0073b1;
-}
-  
-.input-textarea::placeholder {
-    color: #999;
-}
-
 button[type="submit"] {
     padding: 10px;
     border: none;
@@ -54,3 +35,37 @@ button[type="submit"] {
     cursor: pointer;
     display: inline;
   }
+
+/*Commennt*/
+.comment-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adjust spacing between the comment box and comments */
+  }
+  
+  .comment-box-text {
+    flex: 1;
+    padding: 5px;
+    font-size: 14px;
+    border: 2px solid #000; /* Adjust border color and size as needed */
+    border-radius: 5px; /* Adjust border radius as needed */
+  }
+  
+  .comment-box-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #000; /* Adjust border color and size as needed */
+    border-radius: 5px; /* Makes the border circular */
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  .comment-box-button i {
+    font-size: 20px; /* Adjust the font size of the icon as needed */
+  }
+  
+  
+  

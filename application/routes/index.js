@@ -30,7 +30,7 @@ router.get("/login", buildNavBar, buildFooter, async function(req, res, next) {
   });
 })
 
-router.get("/viewpost", buildNavBar, buildMenu, buildFooter, async function(req,res,next) {
+/*router.get("/viewpost", buildNavBar, buildMenu, buildFooter, async function(req,res,next) {
   res.render('viewpost', {
     css: ["viewpost-style.css"],
     font: ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"],
@@ -38,6 +38,7 @@ router.get("/viewpost", buildNavBar, buildMenu, buildFooter, async function(req,
     pageTitle: `Post Dashboard`,    
   });
 })
+*/
 
 router.get("/postvideo", isLoggedIn, buildNavBar, buildMenu, buildFooter, async function(req, res, next) {
   res.render('postvideo', {

@@ -138,6 +138,7 @@ router.get('/delete/:id(\\d+)', async function(req, res, next) {
     }
   });
   
+  /*
   // GET request for edit form
   router.get('/edit/:id(\\d+)', async function(req, res, next) {
     const postId = req.params.id;
@@ -180,7 +181,7 @@ router.get('/delete/:id(\\d+)', async function(req, res, next) {
       next(error);
     }
   });
-  
+  */
   
 
 module.exports = router;

@@ -1,34 +1,72 @@
 <main class="post-container">
   {{#each posts}}
-  <video class="video-container" controls loop>
-    <source class="video" src="/{{video}}" type="video/mp4"/>
-  </video>
-  <div class="post-info">
-    <h2 class="post-title">Title: {{title}}</h2>
-    <div class="post-author-date">
-      <p class="username">{{username}}</p>
-      <p class="date-posted">{{formatDateString createdAt}}</p>
+    <video class="video-container" controls loop>
+      <source class="video" src="/{{video}}" type="video/mp4"/>
+    </video>
+    <div class="post-info">
+      <h2 class="post-title">Title: {{title}}</h2>
+      <div class="post-author-date">
+        <p class="username">{{username}}</p>
+        <p class="date-posted">{{formatDateString createdAt}}</p>
+      </div>
+      <p class="post-description">
+        {{description}}
+      </p>
     </div>
-    <p class="post-description">
-      {{description}}
-    </p>
-  </div>
   {{/each}}
-  <div class="comment-seection">
-  <div class="comment-box">
-    <textarea id="comment-text" class="comment-box-text"></textarea>
-    <i
-      id="comment-button"
-      class="fa fa-commment comment-box-button"
-      aria-hidden="true"
-    ></i>
+  <div class="comment-section">
+    <div class="comment-box">
+      <textarea id="comment-text" class="comment-box-text"></textarea>
+      <button
+        id="comment-button"
+        class="comment-box-button"
+        data-postid="{{postId}}"
+      >
+        <i class="fa fa-comment" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div id="comments" class="comments">
+      {{#each posts.comments}}
+        <div class="comment">
+          <strong class="comment-author">{{username}}</strong>
+          <span class="comment-date">{{formatDateString createdAt}}</span>
+          <div class="comment-text">{{text}}</div>
+        </div>
+      {{/each}}
+    </div>
   </div>
-  <div class="comments">
-    {{#each posts.comments}}
-      {{> commment this}}
-    {{/each}}
-  </div>
-<button class="jump-to-top-button" onclick="jumpToTop()">
-<span class="fa fa-angle-up"></span>
-</button>
+  <button class="jump-to-top-button" onclick="jumpToTop()">
+    <span class="fa fa-angle-up"></span>
+  </button>
 </main>
+<script>
+  document.getElementById('comment-button').addEventListener('click', function (ev) {
+    let commentText = document.getElementById("comment-text").value;
+    if (!commentText) return;
+    var postId = ev.currentTarget.dataset.postid;
+
+    fetch("/comments/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        comment: commentText
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        var comments = document.getElementById('comments');
+        let commentFragment = document.createElement('div');
+        commentFragment.classList.add('comment');
+        commentFragment.innerHTML = `
+          <strong class="comment-author">${data.username}</strong>
+          <span class="comment-date">${new Date().toLocaleString()}</span>
+          <div class="comment-text">${data.commentText}</div>
+        `;
+        comments.appendChild(commentFragment);
+      })
+      .catch(err => console.log(err));
+  });
+</script>
