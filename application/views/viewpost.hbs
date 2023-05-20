@@ -1,37 +1,31 @@
 <main class="post-container">
-  {{#each posts}}
-    <video class="video-container" controls loop>
-      <source class="video" src="/{{video}}" type="video/mp4"/>
-    </video>
-    <div class="post-info">
-      <h2 class="post-title">Title: {{title}}</h2>
-      <div class="post-author-date">
-        <p class="username">{{username}}</p>
-        <p class="date-posted">{{formatDateString createdAt}}</p>
-      </div>
-      <p class="post-description">
-        {{description}}
-      </p>
+  <video class="video-container" controls loop>
+    <source class="video" src="/{{currentPost.video}}" type="video/mp4" />
+  </video>
+  <div class="post-info">
+    <h2 class="post-title">Title: {{currentPost.title}}</h2>
+    <div class="post-author-date">
+      <p class="username">{{currentPost.username}}</p>
+      <p class="date-posted">{{formatDateString currentPost.createdAt}}</p>
     </div>
-  {{/each}}
+    <p class="post-description">
+      {{currentPost.description}}
+    </p>
+  </div>
   <div class="comment-section">
     <div class="comment-box">
       <textarea id="comment-text" class="comment-box-text"></textarea>
-      <button
-        id="comment-button"
-        class="comment-box-button"
-        data-postid="{{postId}}"
-      >
-        <i class="fa fa-comment" aria-hidden="true"></i>
+      <button id="comment-button" class="comment-box-button" aria-hidden="true" data-postid="{{currentPost.id}}">
+        <i class="fa fa-comment"></i>
       </button>
     </div>
     <div id="comments" class="comments">
-      {{#each posts.comments}}
-        <div class="comment">
-          <strong class="comment-author">{{username}}</strong>
-          <span class="comment-date">{{formatDateString createdAt}}</span>
-          <div class="comment-text">{{text}}</div>
-        </div>
+      {{#each currentPost.comments}}
+      <div class="comment">
+        <strong class="comment-author">{{this.username}}</strong>
+        <span class="comment-date">{{formatDateString this.createdAt}}</span>
+        <div class="comment-text">{{this.text}}</div>
+      </div>
       {{/each}}
     </div>
   </div>
@@ -39,6 +33,7 @@
     <span class="fa fa-angle-up"></span>
   </button>
 </main>
+
 <script>
   document.getElementById('comment-button').addEventListener('click', function (ev) {
     let commentText = document.getElementById("comment-text").value;
@@ -51,7 +46,8 @@
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        comment: commentText
+        comment: commentText,
+        postId: postId
       })
     })
       .then(response => response.json())

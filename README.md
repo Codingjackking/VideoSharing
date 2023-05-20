@@ -20,10 +20,11 @@ Please follow the instructions below and fill in the information requested when 
 
 ## Build Instructions
 1. npm install
-2. 
+2. npm install express-session
+3. npm i express-session brcypt express-flash express-mysql-session
+4. npm i validator
+5. npm run builddb
+6. npm install multer ffmpeg-static
 
 ## Run Instructions
 1. npm start
-2. 
-
-## Extra Credit

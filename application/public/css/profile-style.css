@@ -1,6 +1,7 @@
 main {
   padding: 20px;
 }
+
 .grid-container {
   display: flex;
   overflow-x: scroll;

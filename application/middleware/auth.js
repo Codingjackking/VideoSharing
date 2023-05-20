@@ -1,5 +1,5 @@
 module.exports = {
-    isLoggedIn: function(req, res, next) {
+    isLoggedIn: function (req, res, next) {
         if (req.session.user) {
             next();
         } else {
@@ -10,8 +10,9 @@ module.exports = {
             })
         }
     },
-    isMyProfile: function(req,res,next) {
-        var{id} = req.params;
+
+    isMyProfile: function (req, res, next) {
+        var { id } = req.params;
         if (id == req.session.user.userId) {
             next();
         } else {
@@ -22,4 +23,5 @@ module.exports = {
             })
         }
     }
+      
 }

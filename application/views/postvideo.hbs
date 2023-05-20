@@ -1,39 +1,19 @@
 <main class="form-container">
 	<h2>Post a Video</h2>
-	<form id="post-image" class="input-form"
-	  action="/posts/create"
-	  method="POST"
-	  enctype="multipart/form-data">
+	<form id="post-image" class="input-form" action="/posts/create" method="POST" enctype="multipart/form-data">
 		<div class="input-group">
-			<label for="post-title" class="tags post-1b1-title">Post
-				Title: </label>
-			<input id="post-title"
-				class="input-text"
-			 	type="text"
-				name="title"
-				placeholder="Post Title" 
-				required
-			/>
+			<label for="post-title" class="tags post-1b1-title">Post Title: </label>
+			<input id="post-title" class="input-text" type="text" name="title" placeholder="Post Title" required />
 		</div>
 		<div class="input-group">
-			<label for="description">Post 
-			Description:</label>
-			<input 
-			id="post-desc"
-			class="text-input post-input-desc" 
-			type="text"
-			name="description" 
-			placeholder="Post Description here..."
-			required />
-			
+			<label for="description">Post
+				Description:</label>
+			<input id="post-desc" class="text-input post-input-desc" type="text" name="description"
+				placeholder="Post Description here..." required />
+
 		</div>
-			<label class="tags post-1b1-video" for="video">Upload a Video</label>
-			<input 
-				id="img-select"
-				class="text-input post-input-video"
-				type="file"  
-				name="uploadVideo" 
-				required/>
+		<label class="tags post-1b1-video" for="video">Upload a Video</label>
+		<input id="img-select" class="text-input post-input-video" type="file" name="uploadVideo" required />
 		<div class="input-group checkout-group">
 			<label class="checkbox aop" for="aup">
 				<input type="checkbox" name="aup" required>

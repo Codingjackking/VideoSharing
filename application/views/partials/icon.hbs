@@ -8,23 +8,23 @@
         <p>{{user.username}}</p>
       </div>
     </div>
-    <ul>          
+    <ul>
       <li><a href="/users/profile/{{user.userId}}">Your Channel</a></li>
       {{#each links}}
-        <div>
-         <li><a href="{{this.link}}">{{this.text}}</a></li>
-        </div>
-      {{/each}}  
+      <div>
+        <li><a href="{{this.link}}">{{this.text}}</a></li>
+      </div>
+      {{/each}}
       <li>
         <form action="/users/logout" method="post">
-          <button class="nav-items" type="submit">Log out</button>        
+          <button class="nav-items" type="submit">Log out</button>
         </form>
       </li>
-    </ul>  
+    </ul>
   </div>
 </div>
-  {{else}}
-    <div class="nav-items">
-      <a href="/login" class="login-button">Sign In</a>     
-    </div>
-  {{/if}}
+{{else}}
+<div class="nav-items">
+  <a href="/login" class="login-button">Sign In</a>
+</div>
+{{/if}}

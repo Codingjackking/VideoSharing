@@ -18,15 +18,15 @@ main {
     box-sizing: border-box;
     outline: none;
 }
-  
+
 .text-input:focus {
     border-bottom: 1px solid #0073b1;
 }
-  
+
 .text-input::placeholder {
     color: #999;
 }
-  
+
 input[type="submit"] {
     background-color: #ff9900;
     color: #fff;

@@ -13,27 +13,27 @@ router.post(
   passwordCheck,
   emailCheck,
   isUsernameUnique,
-  isEmailUnique, 
+  isEmailUnique,
   async function (req, res, next) {
     var { username, email, password } = req.body;
     try {
       var hashedpassword = await bcrypt.hash(password, 3);
 
       var [resultObject, fields] = await db.execute(
-      `INSERT INTO users (username, email, password) VALUES (?, ?, ?);`,
-      [username, email, hashedpassword]
-    );
+        `INSERT INTO users (username, email, password) VALUES (?, ?, ?);`,
+        [username, email, hashedpassword]
+      );
       if (resultObject && resultObject.affectedRows == 1) {
         req.flash("success", `Registration Successful! Please login to continue.`);
         res.redirect('/login');
-    } else {
+      } else {
         req.flash("error", `Registration failed. Please try again.`);
         return res.redirect('/register');
+      }
+    } catch (error) {
+      next(error);
     }
-  } catch (error) {
-    next(error);
-  }
-});
+  });
 
 router.post('/login', async function (req, res, next) {
   var { username, password } = req.body;
@@ -80,14 +80,14 @@ router.post("/logout", function (req, res, next) {
   })
 });
 
-router.get("/profile/:id(\\d+)", 
-isLoggedIn, 
-isMyProfile, 
-getPostsForUserBy, 
-buildNavBar, 
-buildMenu, 
-buildFooter, 
-async function(req, res, next) {  
+router.get("/profile/:id(\\d+)",
+  isLoggedIn,
+  isMyProfile,
+  getPostsForUserBy,
+  buildNavBar,
+  buildMenu,
+  buildFooter,
+  async function (req, res, next) {
     res.render('profile', {
       css: ['profile-style.css'],
       js: ['menu.js'],
@@ -95,6 +95,8 @@ async function(req, res, next) {
       posts: res.locals.posts
     });
   })
+  
+
 
 router.use('/postvideo', function (req, res, next) {
   if (req.session.user) {

@@ -16,7 +16,7 @@ main {
 .video-wrapper {
   position: relative;
   width: 70%;
-  height: 70%; 
+  height: 70%;
   display: grid;
   grid-template-areas: "media";
 }
@@ -24,7 +24,7 @@ main {
 video {
   grid-area: media;
   width: 85%;
-  height: 85%; 
+  height: 85%;
   object-fit: cover;
   z-index: 1;
   opacity: 0;
@@ -33,19 +33,21 @@ video {
 
 .thumbnail-overlay {
   grid-area: media;
-  width: 85%; 
-  height: 85%; 
+  width: 85%;
+  height: 85%;
   z-index: 2;
 }
 
 .post-container:hover video {
   opacity: 1;
   z-index: 3;
-} 
+}
+
 .post-info {
   font-size: 20px;
   border: 1px white;
-  padding: 10px; /* add some padding to create space */
+  padding: 10px;
+  /* add some padding to create space */
 }
 
 

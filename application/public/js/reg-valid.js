@@ -75,14 +75,14 @@ form.addEventListener("submit", (event) => {
   const isUsernameValid = /[a-zA-Z]/.test(usernameValue) && /^.{3,}$/.test(usernameValue);
   const isEmailValid = emailRegex.test(emailValue);
   const isPasswordValid = /^.{8,}$/.test(passwordValue) && /[A-Z]/.test(passwordValue) &&
-                          /[1-9]/.test(passwordValue) && /[\/*\-+!@#$%^&~\[\]]/.test(passwordValue);
+    /[1-9]/.test(passwordValue) && /[\/*\-+!@#$%^&~\[\]]/.test(passwordValue);
   const isConfirmed = confirmValue === passwordValue;
-  
+
   if (isUsernameValid && isEmailValid && isPasswordValid && isConfirmed) {
     console.log("Form submitted successfully");
     return; /* Refresh the screen */
   } else {
     console.log("Form validation failed");
-    event.preventDefault(); 
+    event.preventDefault();
   }
 });

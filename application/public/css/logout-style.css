@@ -9,6 +9,7 @@ main {
     display: flex;
     justify-content: center;
 }
+
 .content {
     display: flex;
     flex-direction: column;
@@ -23,7 +24,7 @@ header {
     padding: 10px 20px;
     margin-bottom: 1rem;
 }
-  
+
 .logo {
     background-color: #ff0000;
     border: 2px solid #fff;
