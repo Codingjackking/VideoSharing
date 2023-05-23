@@ -4,15 +4,13 @@
   <div class="index-container">
     {{#each posts}}
     <div class="post-container">
-      <a href="/posts/{{postId}}">
-        <div class="video-wrapper">
+      <div class="video-wrapper"  onclick="redirectToPost('{{postId}}')">
           <img class="thumbnail-overlay" src="/{{thumbnail}}">
           <video controls loop>
             <source src="/{{video}}" type="video/mp4">
           </video>
           </img>
-        </div>
-      </a>
+      </div>
       <div class="post-info">
         <p class="desc">{{description}}</p>
         <p class="title">{{title}}</p>
@@ -23,3 +21,10 @@
     {{/each}}
   </div>
 </main>
+
+<script>
+function redirectToPost(postId) {
+  // Replace the URL with the appropriate path to redirect to the specific post
+  window.location.href = `/posts/${postId}`;
+}
+</script>

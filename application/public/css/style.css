@@ -309,6 +309,10 @@ footer {
   color: #fff;
   padding: 10px;
   text-align: center;
+  display: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   margin-top: auto;
 }
 
@@ -329,10 +333,8 @@ footer a {
 }
 
 .footnote {
-  bottom: 0;
-  left: 0;
-  right: 0;
   height: auto;
   padding: 10px;
   text-align: center;
+  margin-top: auto;
 }

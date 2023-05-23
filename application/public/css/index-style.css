@@ -11,20 +11,20 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
+  gap: 20px;
 }
 
 .video-wrapper {
   position: relative;
   width: 70%;
   height: 70%;
-  display: grid;
-  grid-template-areas: "media";
+  display: flex;
+  margin: auto;
 }
 
 video {
-  grid-area: media;
-  width: 85%;
-  height: 85%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: 1;
   opacity: 0;
@@ -32,69 +32,30 @@ video {
 }
 
 .thumbnail-overlay {
-  grid-area: media;
-  width: 85%;
-  height: 85%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 2;
 }
 
-.post-container:hover video {
+.video-wrapper:hover video {
   opacity: 1;
   z-index: 3;
 }
 
 .post-info {
   font-size: 20px;
-  border: 1px white;
   padding: 10px;
-  /* add some padding to create space */
-}
-
-
-
-/*
-.index-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  box-sizing: content-box;
 }
 
 .post-container {
-  position: relative;
+  background-color: skyblue;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
-
-.video-wrapper {
-  position: relative;
-  width: 80%;
-  height: 80%;
-  display: grid;
-  grid-template-areas: "media";
-}
-
-video {
-  grid-area: media;
-  width: 80%;
-  height: 80%;
-  object-fit: cover;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.thumbnail-overlay {
-  grid-area: media;
-  width: 80%;
-  height: 80%;
-  z-index: 2;
-}
-
-.post-container:hover video {
-  opacity: 1;
-  z-index: 3;
-}
-
-.post-info {
-  font-size: 20px;
-  border: 1px white;
-  /*padding-left: 50px;//
-}
-*/

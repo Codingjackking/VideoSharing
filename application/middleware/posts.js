@@ -14,9 +14,11 @@ module.exports = {
         var thumbnailCommand = `${pathToFFMPEG} -ss 00:00:01 -i ${req.
           file.path} -y -s 200x200 -vframes 1 -f image2 ${destinationOfThumbnail}
               `;
-        exec(thumbnailCommand);
-        req.file.thumbnail = destinationOfThumbnail;
-        next();
+              exec(thumbnailCommand, function(error, stdout,stderr){
+                if(error) next(error);
+                  req.file.thumbnail = destinationOfThumbnail;
+                  next();
+                });
       } catch (error) {
         next(error);
       }
