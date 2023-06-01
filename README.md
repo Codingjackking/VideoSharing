@@ -15,16 +15,20 @@ Please follow the instructions below and fill in the information requested when 
 | Student Email | nhtet1        |
 
 
-
 # Build/Run Instructions
 
 ## Build Instructions
-1. npm install
-2. npm install express-session
-3. npm i express-session brcypt express-flash express-mysql-session
-4. npm i validator
-5. npm run builddb
-6. npm install multer ffmpeg-static
+1.Clone or download the application
+2.Open a terminal like powershell and "cd .../application", the "..." represent the name of the downloaded application
+3.Afterward in the terminal start off by "npm run builddb" to create the database which host all the data of the application
+4.Then create a file called '.env' in application folder to match the machine and database configuration. The ".env" file should include the required environment variables:
+"DB_HOST" = DATABASE HOST
+"DB_NAME" = DATABASE NAME
+"DB_USER" = DATABASE USER
+"DB_PASSWORD" = DATABASE PASSWORD
+"PORT" = PORT NUMBER FOR THE APPLICATION
+5.Install all required npm modules by running "npm install" or "npm i" in the terminal. This will install all the required dependencies for the application to work.
 
 ## Run Instructions
-1. npm start
+1.Afterward, "npm start" to start the server which host the application
+2.Open browser and go the url "localhost:3000" and then you can use the application as desired.
